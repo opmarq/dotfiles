@@ -1,77 +1,70 @@
-inoremap jk <Esc>
-nnoremap <C-p> :Files<CR>
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>h :History<CR>
-nnoremap <Leader>t :BTags<CR>
-nnoremap <Leader>T :Tags<CR>
-map <C-o> :NERDTreeToggle<CR>
 
 " Change <leader> to be comma
 let mapleader = ","
 let g:mapleader = ","
 
-" Shortcut to use blackhole register by default
-vnoremap d "_d
-nnoremap D "_D
-vnoremap D "_D
-nnoremap c "_c
-vnoremap c "_c
-nnoremap C "_C
-vnoremap C "_C
-nnoremap x "_x
-vnoremap x "_x
-nnoremap X "_X
-vnoremap X "_X
+inoremap jk <Esc>
+nnoremap <leader>p :Files<CR>
+nnoremap <leader>f :Ag<cr>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>h :History<CR>
+nnoremap <Leader>t :BTags<CR>
+nnoremap <Leader>T :Tags<CR>
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+map ,o :NERDTreeToggle<CR>
+nmap ,n :NERDTreeFind<CR>
 
-" Shortcut to use clipboard with <leader>
-nnoremap <leader>d d
-vnoremap <leader>d d
-nnoremap <leader>D D
-vnoremap <leader>D D
-nnoremap <leader>c c
-vnoremap <leader>c c
-nnoremap <leader>C C
-vnoremap <leader>C C
-nnoremap <leader>x x
-vnoremap <leader>x x
-nnoremap <leader>X X
-vnoremap <leader>X X
-
-call plug#begin()
-	Plug 'junegunn/seoul256.vim'
-	Plug 'preservim/nerdtree'
-	Plug 'Xuyuanp/nerdtree-git-plugin'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'tpope/vim-commentary'
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	Plug 'sheerun/vim-polyglot'
-	Plug 'flazz/vim-colorschemes'
-	Plug 'unblevable/quick-scope'
-	Plug 'junegunn/goyo.vim'	
-	Plug 'tpope/vim-surround'
-	Plug 'itchyny/lightline.vim'
-	Plug 'terryma/vim-multiple-cursors'
-	Plug 'tpope/vim-eunuch'
-	Plug 'mattn/emmet-vim'
+call plug#begin('~/.vim/plugged')
+	 Plug 'junegunn/seoul256.vim'
+	 Plug 'bagrat/vim-buffet'
+	 Plug 'preservim/nerdtree'
+	 Plug 'bagrat/vim-buffet'
+	 Plug 'Xuyuanp/nerdtree-git-plugin'
+	 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	 Plug 'junegunn/fzf.vim'
+	 Plug 'jiangmiao/auto-pairs'
+	 Plug 'tpope/vim-commentary'
+	 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	 Plug 'sheerun/vim-polyglot'
+	 Plug 'flazz/vim-colorschemes'
+	 Plug 'unblevable/quick-scope'
+	 Plug 'junegunn/goyo.vim'	
+	 Plug 'tpope/vim-surround'
+	 Plug 'itchyny/lightline.vim'
+	 Plug 'terryma/vim-multiple-cursors'
+	 Plug 'tpope/vim-eunuch'
+	 Plug 'mattn/emmet-vim'
+	 Plug 'rakr/vim-one'
+	Plug 'vim-airline/vim-airline'
 call plug#end()
 
 set number
 set relativenumber
-set foldmethod=indent   
-set foldnestmax=10
-set nofoldenable
-set foldlevel=2
+
+"-- FOLDING --
+set foldmethod=syntax "syntax highlighting items specify folds
+set foldcolumn=1 "defines 1 col at window left, to indicate folding
+let javaScript_fold=1 "activate folding by JS syntax
+set foldlevelstart=99 "start file with all folds opened
+
 set clipboard=unnamedplus
 set fillchars-=vert:\| | set fillchars+=vert:\ 
-
+" let g:airline_theme='one'
 
 let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+let g:rainbow_active = 1
 
-colo seoul256
-let g:seoul256_background = 236
+" colorscheme one
+" set background=dark 
+" let g:one_allow_italics = 1 
+autocmd vimenter * colorscheme gruvbox
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
